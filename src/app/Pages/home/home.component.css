@@ -1,0 +1,12 @@
+:host{
+    --color-primary: #B3CF97;
+    --color-secundary: #616f39;
+    --color-tertiary:#4e9d18;
+    --color-dark: #0D1F22;
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+    --color-gray: #B0B0B0;
+    --color-danger: #E53935; 
+    --color-dark1:rgba(13, 31, 34, 1); 
+  }
+  

@@ -1,0 +1,133 @@
+<!-- Main container for the top navigation bar -->
+<div class="max-w-full bg-[var(--color-button)] shadow-lg z-50 dark:bg-[var(--color-title)]">
+  <nav class="block ml-auto sm:px-10 md:px-3 lg:px-0">
+    <div class="block ml-auto max-w-7xl px-2 sm:px-6 lg:w-full">
+      <div class="relative flex h-16 items-center justify-end">
+
+        <!-- Timer display (conditionally styled) -->
+        <div class="hidden sm:flex items-center">
+          @if(Number(this.timer.formattedMinLeft()) >= 2){
+            <div class="container flex items-center mr-4 font-mono text-4xl text-white bg-[var(--color-button)] p-4 rounded w-fit h-16 dark:bg-[var(--color-title)]">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 mr-2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+              <h2 class="mr-3">{{this.timer.formattedMinLeft() }}:{{this.timer.formattedSecLeft()}}</h2>
+            </div>
+          }@else {
+            <div class="container flex items-center mr-4 font-mono text-4xl text-red-700 bg-[var(--color-button)] p-4 rounded w-fit h-16 dark:bg-[var(--color-title)]">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+              </svg>
+              <h2 class="mr-3">{{this.timer.formattedMinLeft() }}:{{this.timer.formattedSecLeft()}}</h2>
+            </div>
+          }
+        </div>
+
+        <!-- Notification and user menu buttons -->
+        <div class="flex items-center pr-0">
+          <div class="relative">
+            <button type="button" class="flex rounded-full p-1 text-black-400 hover:text-gray-500 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:outline-hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-8 text-white hover:text-gray-500">
+                <path fill-rule="evenodd" d="M5.25 9a6.75 6.75 0 0 1 13.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 0 1-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 1 1-7.48 0 24.585 24.585 0 0 1-4.831-1.244.75.75 0 0 1-.298-1.205A8.217 8.217 0 0 0 5.25 9.75V9Zm4.502 8.9a2.25 2.25 0 1 0 4.496 0 25.057 25.057 0 0 1-4.496 0Z" clip-rule="evenodd" />
+              </svg>
+            </button>
+          </div>
+          <div class="relative ml-3">
+            <button type="button" class="rounded-full flex text-white hover:text-gray-200 hover:cursor-pointer text-sm focus:text-gray-200" id="user-menu-button" aria-expanded="false" aria-haspopup="true" (click)="openModal()">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-8">
+                <path fill-rule="evenodd" d="M11.078 2.25c-.917 0-1.699.663-1.85 1.567L9.05 4.889c-.02.12-.115.26-.297.348a7.493 7.493 0 0 0-.986.57c-.166.115-.334.126-.45.083L6.3 5.508a1.875 1.875 0 0 0-2.282.819l-.922 1.597a1.875 1.875 0 0 0 .432 2.385l.84.692c.095.078.17.229.154.43a7.598 7.598 0 0 0 0 1.139c.015.2-.059.352-.153.43l-.841.692a1.875 1.875 0 0 0-.432 2.385l.922 1.597a1.875 1.875 0 0 0 2.282.818l1.019-.382c.115-.043.283-.031.45.082.312.214.641.405.985.57.182.088.277.228.297.35l.178 1.071c.151.904.933 1.567 1.85 1.567h1.844c.916 0 1.699-.663 1.85-1.567l.178-1.072c.02-.12.114-.26.297-.349.344-.165.673-.356.985-.57.167-.114.335-.125.45-.082l1.02.382a1.875 1.875 0 0 0 2.28-.819l.923-1.597a1.875 1.875 0 0 0-.432-2.385l-.84-.692c-.095-.078-.17-.229-.154-.43a7.614 7.614 0 0 0 0-1.139c-.016-.2.059-.352.153-.43l.84-.692c.708-.582.891-1.59.433-2.385l-.922-1.597a1.875 1.875 0 0 0-2.282-.818l-1.02.382c-.114.043-.282.031-.449-.083a7.49 7.49 0 0 0-.985-.57c-.183-.087-.277-.227-.297-.348l-.179-1.072a1.875 1.875 0 0 0-1.85-1.567h-1.843ZM12 15.75a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5Z" clip-rule="evenodd" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+<!-- Settings modal (only shown if modal is open) -->
+@if (isModalOpen) {
+  <div class="fixed top-0 left-0 right-0 bottom-0 z-40 flex items-center justify-center backdrop-blur-lg bg-opacity-50">
+    <div class="relative p w-120 max-w-xl md:max-w-2xl bg-[var(--color-button)] rounded shadow-gray-500 shadow-2xl max-h-[90vh] overflow-y-auto mx-4 md:mx-0">
+
+      <!-- Modal header with icon and title -->
+      <div class="sticky top-0 relative flex items-center justify-between rounded-t border-2 border-[var(--color-button)] bg-[var(--color-button)] dark:bg-[var(--color-title)] p-2">
+        <div class="flex items-center text-[var(--color-dark)]">
+          <svg class="size-6 text-white dark:text-black" xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+          </svg>
+        </div>
+        <p class="absolute left-1/2 transform -translate-x-1/2 text-center text-ml text-white dark:text-[var(--color-dark)]">
+          {{ 'Setting.SettingT' | translate }}
+        </p>
+        <button (click)="closeModal()"
+          class="flex h-5 w-5 items-center justify-center rounded-lg border border-1 bg-[var(--color-title)] dark:bg-[var(--color-button)] text-sm text-[var(--color-dark)] hover:bg-red-500 hover:text-[var(--color-dark)] hover:cursor-pointer">
+          <svg class="mx-auto h-3 w-3 text-black dark:text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal content continues below -->
+      <div class="flex items-center justify-center border-x-2 border-b-2 border-[var(--color-button)]">
+        <div class="relative w-120 bg-white dark:bg-[var(--color-dark)] text-left text-xl dark:text-white text-gray-800 shadow-xl">
+
+          <!-- Translate Btn -->
+          <div class="flex justify-between items-center border-b cursor-pointer border-gray-100">
+            <label for="language-select" class="ml-3">{{ 'Setting.Language' | translate }}</label>
+            <select id="language-select" [value]="selectedLanguage" (change)="cambiarIdiomaDesdeSelector($event)" class="px-2 my-1 py-2 dark:text-white border rounded text-xs mr-2">
+              <option value="es" class="text-black">{{ 'ES' | translate }}</option>
+              <option value="en" class="text-black">{{ 'EN' | translate }}</option>
+            </select>
+          </div>
+
+          <!-- Mode Btn -->
+          <div class="flex justify-between items-center border-b cursor-pointer border-gray-100">
+            <h2 class="ml-3 mb-1 mt-1">{{ 'Setting.Mode' | translate }}</h2>
+            <div class="flex items-center pr-3">
+              <label for="check" class="bg-[var(--color-title)] cursor-pointer relative w-12 h-6 rounded-full">
+                <input type="checkbox" id="check" class="sr-only peer"   [checked]="isDarkMode" (change)="toggleTheme()">            
+                <span class="w-5 h-5 bg-white absolute rounded-full left-1 top-0.5 peer-checked:bg-[var(--color-dark)] peer-checked:left-6 transition-all duration-300"></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Private Btn -->
+          <div class="flex justify-between border-b border-gray-100">
+            <h2 class="ml-3 mb-1 mt-1">{{ 'Setting.PrivatePolity' | translate }}</h2>
+            <div class="flex items-center pr-3">
+              <svg class="size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Contact Btn -->
+          <div class="flex justify-between border-b border-gray-100">
+            <h2 class="ml-3 mb-1 mt-1">{{ 'Setting.Contact' | translate }}</h2>
+            <div class="flex items-center pr-3">
+              <svg class="size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Information Btn -->
+          <div class="flex justify-between">
+            <h2 class="ml-3 mb-1 mt-1">{{ 'Setting.Information' | translate }}</h2>
+            <div class="flex items-center pr-3">
+              <svg class="size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}

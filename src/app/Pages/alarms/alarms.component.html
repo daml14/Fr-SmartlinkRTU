@@ -1,0 +1,101 @@
+<!-- Título -->
+<div class="w-full lg:w-5/6 rounded-xl border bg-white dark:bg-[var(--color-dark1)] text-4xl text-[var(--color-button)] dark:text-[var(--color-title)] font-[var(--fuente)] mr-10 mt-10 px-4 ">
+  <h1 class="text-center py-2">{{'Table.TitleAlarms' | translate }}</h1>
+</div>
+  
+<!-- Filtros -->
+<div class="w-5/6 mx-auto lg:pl-72 mt-10">
+  <div class="grid grid-cols-1 gap-y-6 lg:grid-cols-3 lg:gap-4">
+
+     <!-- EXPORT button -->
+     <div class="flex flex-col lg:flex-row lg:items-center w-auto lg:mx-auto gap-2">
+      <label class="text-sm font-normal dark:text-white text-[var(color-dark)]">{{'Table.FilterList' | translate }}</label>
+      <button  (click)="exportToPdf()" class="h-[42px] w-full lg:w-auto flex items-center justify-center gap-2 rounded-lg border-2 border-[var(--color-button)] bg-white dark:bg-[var(--color-title)] text-[var(color-dark)]  font-normal shadow-md transition hover:bg-[var(--button-table)] hover:text-white hover:border-black px-4 cursor-pointer">
+        <span class="text-sm">{{'Table.Export' | translate }}</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+            d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0 1 10.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0 .229 2.523a1.125 1.125 0 0 1-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0 0 21 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 0 0-1.913-.247M6.34 18H5.25A2.25 2.25 0 0 1 3 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 0 1 1.913-.247m10.5 0a48.536 48.536 0 0 0-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5Zm-3 0h.008v.008H15V10.5Z" />
+          </svg>
+      </button>
+    </div>
+
+   <!-- TYPE select -->
+   <div class="flex flex-col lg:flex-row lg:items-center w-full lg:mx-auto gap-2">
+    <label for="typeSelect" class="text-sm font-normal dark:text-white text-[var(color-dark)] w-auto lg:mx-1">{{'Table.Type' | translate }}</label>
+    <select
+      id="typeSelect"
+      class="h-[42px] w-full rounded-lg border-2 border-[var(--color-button)] bg-white dark:bg-[var(--color-title)] px-3 text-[var(color-dark)] shadow-md transition hover:bg-[var(--button-table)] hover:text-white focus:outline-none hover:border-black cursor-pointer"
+    >
+      <option value="">tipo1</option>
+      <option value="">tipo2</option>
+      <option value="">tipo3</option>
+      <option value="">tipo4</option>
+      <option value="">tipo5</option>
+      <option value="">tipo6</option>
+    </select>
+  </div>
+
+  <!-- DATE picker -->
+    <div class="flex flex-col lg:flex-row lg:items-center gap-2 w-auto lg:mx-auto ">
+      <label for="dateInput" class="text-sm font-normal dark:text-white text-[var(color-dark)] w-auto">{{'Table.Date' | translate }}</label>
+        <input
+        id="dateInput"
+        type="date"
+        class="h-[42px] w-full rounded-md border-2 border-[var(--color-button)] bg-white dark:bg-[var(--color-title)] px-3 shadow-sm hover:bg-[var(--button-table)] hover:border-black hover:text-white cursor-pointer"/>
+    </div>
+  </div>
+</div>
+
+  <!-- TABLE -->
+ <div class="w-5/6 mx-auto px-4 mt-10 lg:pl-72 mb-5">
+  <div class="rounded-lg border-2 border-[var(--color-button)] shadow-md overflow-x-auto">
+    <table class="min-w-full border-collapse bg-[var(--color-button)] dark:bg-[var(--color-title)] text-left text-m ">
+      <thead>
+        <tr class="text-white dark:text-black text-center">
+          <th scope="col" class="px-6 py-4 font-normal">{{'Table.Date' | translate }}</th>
+          <th scope="col" class="px-6 py-4 font-normal">{{'Table.OilWellName' | translate }}</th>
+          <th scope="col" class="px-6 py-4 font-normal">{{'Table.SensorId' | translate }}</th>
+          <th scope="col" class="px-6 py-4 font-normal">{{'Table.Type' | translate }}</th>
+          <th scope="col" class="px-6 py-4 font-normal">{{'Table.Description' | translate }}</th>
+          <th scope="col" class="px-6 py-4 font-normal">{{'Table.Action' | translate }}</th>
+          <th scope="col" class="px-6 py-4 font-normal">{{'Table.Done' | translate }}</th>
+        </tr>
+      </thead>
+      
+      <tbody class="divide-y divide-gray-100 border-t border-gray-100 bg-white text-center dark:bg-[var(--color-dark1)] dark:text-white">
+        @for (alarm of this.alarmService.alarms | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }; track $index) {
+          <tr class="hover:bg-[var(--color-title)] hover:text-white hover:opacity-95 hover:border-y hover:border-black">
+            <td class="px-6 py-4">{{ alarm.createAt }}</td>
+            
+            <td class="px-6 py-4">
+              <span class="underline cursor-pointer" (click)="viewOilWell(alarm.oilWellId)">
+              {{ alarm.oilwellName }}
+              </span>
+            </td>
+
+            <td class="px-6 py-4">{{ alarm.sensorId }}</td>
+            <td class="px-6 py-4">{{ alarm.alarmType }}</td>
+            <td class="px-6 py-4">{{ alarm.alarmDescrip }}</td>
+            <td class="px-6 py-4">{{ alarm.alarmAction }}</td>
+            <td class="px-6 py-4">
+              <input
+                type="checkbox"
+                [checked]="alarm.done"
+                (change)="toggleDone(alarm)"
+                class="w-5 h-5 text-[var(--color-button)] border-gray-300 rounded focus:ring-[var(--color-button)] cursor-pointer"
+              />
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="w-5/6 mx-auto px-4 mt-4 mb-10 flex justify-center lg:pl-72">
+  <pagination-controls
+    (pageChange)="onPageChange($event)"
+    [previousLabel]="'Pagination.Previus' | translate"
+    [nextLabel]="'Pagination.Next' | translate"
+  ></pagination-controls>
+</div>

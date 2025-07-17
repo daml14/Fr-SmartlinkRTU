@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/leaflet/dist/leaflet.css';
+@import "tailwindcss"; /* Asegúrate de que esta línea esté presente y correcta */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html, body { height: 100%; }
+html {
+  @apply bg-white ;
+}
+html.dark {
+  background-color: #1B1B1B; 
+}
+html.dark pagination-controls .ngx-pagination {
+  color: white;
+}
+
+html.dark pagination-controls .ngx-pagination a,
+html.dark pagination-controls .ngx-pagination .current {
+  color: white !important;
+}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

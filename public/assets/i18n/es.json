@@ -1,0 +1,190 @@
+{
+    "Home": {
+    "TitleWelcome": "Bienvenido a",
+    "TextFor": "por",
+    "ReadMore": "Saber Más",
+    "WtiPrice": "Precio WTI",
+    "BrentPrice": "Precio Brent",
+    "UsProduction": "Producción EE.UU.",
+    "GlobalProduction": "Producción Global",
+    "Update": "Actualizado",
+    "MillionBD": "M de barriles/día",
+    "SomethingHappened": "Ocurrió un Problema",
+    "Charging": "Cargando datos...",
+    "ChartWtiLabel": "Evolucion del precio WTI",
+    "ChartBrentLabel": "Evolucion del precio Brent",
+    "ChartUsProductionLabel": "Evolucion de la producción EE.UU.",
+    "ChartGlobalProductionLabel": "Evolucion de la producción Global",
+    "ErrorLoadingPrices": "Error al cargar los precios de mercado.",
+    "ErrorLoadingProduction": "Error al cargar los datos de producción."
+  },
+    "Setting":{
+      "SettingT":"CONFIGURACIONES",
+      "Language":"Idioma",
+      "Mode":"Modo Oscuro",
+      "PrivatePolity":"Politica de Privacidad",
+      "Contact":"Contacto",
+      "Information":"Informacion Corporativa"
+
+    },
+
+    "Swal":{
+      "TitleLogout":"Sesion Expirada",
+      "TitleExit":"¿Seguro que quieres volver a la Pantalla anterior?",
+      "DeleteTitle":"¿Estas seguro que quieres eliminar el registro?",
+      "Yes":"SI",
+      "SuccessT":"¡Registro hecho de manera exitosa!",
+      "DeleteSuccess":"¡La eliminacion fue exitosa!",
+      "DeleteErrorT":"Hubo un ERROR",
+      "DeleteError":"No se pudo eliminar el registro por que esta asociado a otros registros",
+      "TextDelete":"Esta acción eliminará el registro de forma permanente y podría implicar la pérdida de información sensible. Para continuar, escriba 'CONFIRMAR'.",
+      "PlaceHolderDelete":"Escriba 'CONFIRMAR'",
+      "ValidationDelete":"Tiene que ser exactamente CONFIRMAR",
+      "Unlock":"Desbloqueo de Controles de la Bomba",
+      "UnlockT":"Las acciones realizadas tras desbloquear los controles son responsabilidad exclusiva del operador.Este sistema no interviene ni valida las decisiones tomadas que puedan afectar el rendimiento o la integridad de la bomba.Recuerde que todas las acciones quedan registradas en el sistema."
+    },
+    "Pagination":{
+      "Next":"Siguiente",
+      "Previus":"Anterior"
+    },
+
+    "PDF":{
+      "Title": "Reporte de Alarmas",
+      "Create": "Creado",
+      "WellName": "Nombre del Pozo",
+      "SensorId": "ID del Sensor",
+      "Type": "Tipo",
+      "Description": "Descripción",
+      "Action": "Acción",
+      "Status": "Estado",
+      "FilenamePrefix": "ReporteAlarmas",
+      "Resolved": "Resuelto",
+      "Unresolved": "No Resuelto"
+   },   
+
+
+    "SideBar":{
+      "Home": "Inicio",
+      "Production":"Producción",
+      "OilZone":"Zona Petrolera",
+      "OilField":"Campo Petrolero",
+      "OilWell":"Pozo Petrolero",
+      "Events":"Eventos",
+      "Dinagraph":"Cartas Dinagraficas",
+      "Alarms":"Historico Alarmas",
+      "Sign_Out":"Cerrar Sesion"
+    },
+    
+    "Production":{
+      "TitleField":"CAMPOS PETROLEROS",
+      "TitleZone":"ZONAS PETROLERAS",
+      "TitleWell":"POZOS PETROLEROS",
+      "CreateBtn":"Crear",
+      "Name":"Nombre",
+      "BpD":"Barriles por Dia",
+      "Ubication":"Ubicacion",
+      "ZoneName":"Nombre de Zona",
+      "ViewMap":"Ver Mapa",
+      "ViewSensor":"Ver Sensor",
+      "Location":"Localización",
+      "Details":"Detalles",
+      "OilWells":"Pozos Totales",
+      "Delete":"Eliminar",
+      "Sensor":"Ver sensores"
+
+    },
+
+    "Table":{
+      "TitleEvents":"EVENTOS",
+      "TitleAlarms":"ALARMAS",
+      "FilterList":"Lista Filtrada",
+      "Export":"Exportar",
+      "Type":"Tipo",
+      "Date":"Fecha",
+      "User":"Usuario",
+      "UserLevel":"Nivel de Usuario",
+      "Description":"Descripcion",
+      "Action":"Accion",
+      "Done":"Hecho",
+      "OilWellName":"Nombre de Pozo",
+      "SensorId":"Id del Sensor"
+
+    },
+    "Sensor":{
+      "Name":"Nombre",
+      "Type":"Tipo",
+      "MinValue":"Valor Minimo",
+      "MaxValue":"Valor Maximo",
+      "Modify":"Modificar",
+      "Delete":"Eliminar",
+      "Create":"Crear",
+      "ControlPanel":"Panel de Control"
+    },
+
+    "Dinagraph":{
+      "DirtyPumpT":"Bomba Sucia",
+      "DirtyPumpC":"La carta dinagráfica describe un problema de suciedad en una bomba, listando las causas principales como partículas sólidas y residuos en el líquido bombeado.",
+      "FinalAscPumpT":"Golpe de Bomba Final Ascendete",
+      "FinalAscPumpC":"La carta dinagráfica describe un problema de suciedad en una bomba, listando las causas principales del problema como sólidas partículas y residuos orgánicos en el líquido bombeado. Se listan también desgaste y corrosión de los componentes internos como contribuyentes.",
+      "FinalDesPumpT":"Golpe de Bomba Final Descendete",
+      "FinalDesPumpC":"La carta dinagráfica describe golpe de bomba en la carrera final descendente ocurre cuando el pistón o émbolo de la bomba golpea con fuerza en su punto más bajo, generando vibraciones y posibles daños en los componentes. Puede deberse a una insuficiente amortiguación, alta velocidad de operación o desgaste en los mecanismos internos.",
+      "DamagedPumpT":"Bomba Severamente Dañada",
+      "DamagedPumpC":" La carta dinagráfica describe una bomba severamente dañada presenta fallos en sus componentes debido a factores como desgaste extremo, corrosión, cavitación o impacto de partículas sólidas. Esto puede reducir su eficiencia, causar fugas y afectar el rendimiento del sistema en el que opera.",
+      "FullPumpT":"Bomba Llena",
+      "FullPumpC":" Una carta dinagráfica de bomba llena describe el estado en el que la bomba está completamente cargada de fluido, sin cavitación ni burbujas de aire en el sistema. Esto indica que la bomba está operando bajo condiciones óptimas, con flujo constante y eficiente. En este estado, no se observan caídas en el rendimiento ni problemas relacionados con la entrada de aire, lo que ayuda a prevenir daños en los componentes internos de la bomba.",
+      "TravelLeakT":"Fuja de Valvula Viajera",
+      "TravelLeakC":"La carta dinagráfica de una fuga en la válvula viajera describe una pérdida de presión o fluido a través de la válvula durante su operación. Esta fuga puede ser causada por desgaste, corrosión, o fallos en el sello de la válvula. Se especifica que la fuga reduce la eficiencia del sistema, provocando posibles pérdidas de fluido y alteraciones en el control del proceso.",
+      "FixedLeakT":"Fuga de Valvula Fija",
+      "FixedLeakC":" La carta dinagráfica de una fuga en la válvula fija describe la pérdida de fluido a través de la válvula debido a defectos en el sello o desgaste de los componentes internos. Esta fuga puede causar una disminución en la presión del sistema, afectando su eficiencia y funcionamiento. Se identifican posibles causas como corrosión, acumulación de residuos o fallos en la instalación.",
+      "GasInterferenceT":"Interferencia de Gas",
+      "GasInterferenceC":" La carta dinagráfica de interferencia de gas describe un problema en el que la presencia de gas en el sistema de bombeo afecta negativamente el flujo del fluido. Esta interferencia puede provocar cavitación, reducción de la capacidad de bombeo y fluctuaciones en la presión, lo que compromete la eficiencia del sistema. Las causas comunes incluyen la aspiración de gas desde el reservorio o la desgasificación del fluido.",
+      "FluidShockT":"Golpe de Fluido",
+      "FluidShockC":" La carta dinagráfica de golpe de fluido describe un evento en el que una repentina variación en la velocidad del flujo de fluido causa un aumento brusco de presión dentro del sistema. Este fenómeno, conocido como golpe de ariete, puede generar daños en las tuberías, válvulas y otros componentes debido a la presión excesiva. Las causas más comunes incluyen el cierre rápido de válvulas o la detención súbita del flujo."
+
+    },
+
+    "Form":{
+      "ZoneT":"CREAR ZONAS",
+      "FieldT":"CREAR CAMPO",
+      "OilWellT":"CREAR POZO",
+      "SensorT":"CREAR SENSOR",
+      "Name":"Nombre",
+      "PlaceholderName":"Escriba el Nombre",
+      "NameError":"El Nombre es REQUERIDO",
+      "SelectionType":"Tipo de Sensor",
+      "PlaceholderType":"Selecciona un Tipo",
+      "UnitSensor":"Unidad de Medida",
+      "PlaceholderUnit":"Selecciona una Unidad de Medida",
+      "MinValue":"Valor Minimo",
+      "PlaceholderMin":"Ingresa un Valor Minimo",
+      "MinError":"El valor Minimo es REQUERIDO",
+      "MaxValue":"Valor Maximo",
+      "PlaceholderMax":"Ingresa un Valor Maximo",
+      "MaxError":"El valor Maximo es REQUERIDO",
+      "PlcName":"Nombre del Plc",
+      "PlaceholderPlc":"Ingresa el Nombre del Plc",
+      "PlcError":"El Nombre del Plc es REQUERIDO",
+      "BarrelPerDay":"Barriles por Dia",
+      "PlaceholderBpD":"Escriba los barriles diarios",
+      "SelectionZone":"Seleccionar Zona",
+      "PlaceholderSelectZ":"Selecciona una Zona",
+      "SelectionField":"Selecciona un Campo",
+      "PlaceholderSelectF":"Selecciona un Campo",
+      "CoordinatesSection":"Coordenadas",
+      "Help":"Ayuda",
+      "CoorUbication":"Coordenadas de Ubicacion",
+      "CoorError":"La Ubicacion es REQUERIDA",
+      "CoorSouth":"Longitud y Latitud Sur",
+      "CoorSouthError":"Las Coordenadas SUR son REQUERIDAS",
+      "CoorNorth":"Longitud y Latitud Norte",
+      "CoorNorthError":"Las Coordenadas NORTE son REQUERIDAS",
+      "CoorWest":"Longitud y Latitud Oeste",
+      "CoorWestError":"Las Coordenadas OESTE son REQUERIDAS",
+      "CoorEast":"Longitud y Latitud Este",
+      "CoorEastError":"Las Coordenadas ESTE son REQUERIDAS",
+      "PlaceholderCoordinates":"Ingrese las Coordenadas",
+      "Create":"Crear"
+    }
+
+
+  }

@@ -1,0 +1,12 @@
+:host{
+  grid-area: contenido;
+  --color-title: #B3CF97;
+  --color-button: #616f39;
+  --color-black: #1b1b1b;
+  --button-table:#4e9d18;
+  --color-dark: #0D1F22;
+   --color-dark1:rgba(13, 31, 34, 0.99);
+  --color-dark2:#252525;
+}
+
+
