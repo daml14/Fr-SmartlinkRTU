@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { Location } from '@angular/common';
@@ -10,7 +9,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, SidebarComponent, HeaderComponent,SweetAlert2Module,NgxGaugeModule,SpinnerLoadComponent,NgxPaginationModule],
+  imports: [RouterOutlet, HeaderComponent,SweetAlert2Module,NgxGaugeModule,SpinnerLoadComponent,NgxPaginationModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

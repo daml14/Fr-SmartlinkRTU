@@ -1,21 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {  isPlatformBrowser } from '@angular/common';
+import { Component, inject, Inject, PLATFORM_ID, signal, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from '../../services/login/login.service';
 import { TranslateModule,TranslateService } from '@ngx-translate/core';
-import { CurrencyPipe, DatePipe, DecimalPipe } from '@angular/common';
-import { Chart } from 'chart.js';
-import { OilPrice, ProductionData } from '../../models/OilPrices';
-import { OilPriceService } from '../../services/oilPrices/oil-prices.service';
+import { ThemeService } from '../../services/theme/theme.service';
 
 
-// Component-specific Types and Interfaces
-type ChartableDataType = 'wti' | 'brent' | 'usProduction' | 'globalProduction';
-
-interface ChartDataConfig {
-  label: string;
-  data: number[];
-  labels: string[];
-  unit: 'currency' | 'millions' | 'thousands';
-  borderColor: string;
-}
 
 @Component({
   selector: 'pages-home',
@@ -26,36 +16,53 @@ interface ChartDataConfig {
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  public link: string = "https://lift.energy/es/";
-
-  // Data properties
-  public wtiPrice?: OilPrice;
-  public brentPrice?: OilPrice;
-  public usProduction?: ProductionData;
-  public globalProduction?: ProductionData;
-  public globalProductionInMillions: number = 0;
-
-  // State properties for UI
-  public pricesErrorMessage?: string;
-  public productionErrorMessage?: string;
-  public selectedChartData?: ChartDataConfig;
+  isBrowser: boolean;
+  isDarkMode = signal(true);
   
-  // Chart.js instance
-  public dynamicChart: Chart | undefined;
 
-  // Lifecycle Hooks & Constructor
-  constructor(
-    private oilPriceService: OilPriceService,
-    private translate: TranslateService
-  ) { }
-
+  public loginService = inject(LoginService);
+  private themeService = inject(ThemeService);
+  constructor(public router: Router, @Inject(PLATFORM_ID) private platformId: Object,private translate: TranslateService) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+    if (this.isBrowser) {
+      
+    }
+    this.themeService.darkMode$.subscribe(mode =>{
+      this.isDarkMode.set(mode);
+    })
+  }
+  ngOnDestroy(): void {
+    if (typeof window !== 'undefined') {
+     window.location.reload(); //change
+     }
+  }
   ngOnInit(): void {
     
   }
 
-  ngOnDestroy(): void {
-   
-  }
 
+navigateTo(n: number): void {
+    console.log(`Navegando con el índice: ${n}`);
 
+    switch (n) {
+        case 0:
+            const id = 4;
+            this.router.navigate([`/ViewSensors/${id}`]);
+            break; 
+
+        case 1:
+           this.router.navigate([`/network-config`]);
+            break; 
+
+        case 2:
+        case 3:
+            this.router.navigate([`/build-page`]);
+            break; 
+
+        default:
+           
+            console.warn(`Índice de navegación no reconocido: ${n}`);
+            break;
+    }
+}
 }

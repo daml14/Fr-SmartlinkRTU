@@ -113,7 +113,7 @@ export class ViewSensorComponent implements OnInit, OnDestroy {
                allowEnterKey: false, 
              }).then(rs=>{
                if(rs.isConfirmed){
-                 this.router.navigate(['/ViewOilWell'])
+                 this.router.navigate(['/home'])
                }
              })
            }) 

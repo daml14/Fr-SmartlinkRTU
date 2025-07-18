@@ -10,6 +10,7 @@ import { FormSensorComponent } from './Pages/Forms/form-sensor/form-sensor.compo
 import { BuildPageComponent } from './Pages/build-page/build-page.component';
 import { Events } from 'leaflet';
 import { AlarmsComponent } from './Pages/alarms/alarms.component';
+import { NetworkConfigComponent } from './Pages/network-config/network-config.component';
 
 export const routes: Routes = [
    
@@ -24,7 +25,13 @@ export const routes: Routes = [
       canActivate:[authenticatedGuard]
     },
     {
-      path: 'ViewSensors/:id',
+      path: 'home',
+      component: HomeComponent,
+      canActivate: [authGuard]
+    },
+     {
+      path: 'ViewSensors/:id' ,
+
       component: ViewSensorComponent,
       canActivate: [authGuard]
     },
@@ -41,6 +48,11 @@ export const routes: Routes = [
     {
       path: 'build-page',
       component: BuildPageComponent,
+      canActivate: [authGuard]
+    },
+    {
+      path: 'network-config',
+      component: NetworkConfigComponent,
       canActivate: [authGuard]
     },
     {

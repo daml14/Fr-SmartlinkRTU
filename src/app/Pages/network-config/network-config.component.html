@@ -1,0 +1,109 @@
+<!-- Botón Volver -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between max-w-3xl mx-auto px-4 mt-6 gap-4">
+  <div class="w-10 h-10">
+    <button (click)="exit()" class="w-full h-full flex items-center justify-center border-2 border-[var(--color-button)] rounded-full text-[var(--color-dark)] hover:bg-[var(--button-table)] dark:bg-[var(--color-title)] hover:text-white hover:border-[var(--color-dark)] transition-all duration-200 cursor-pointer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-10">
+        <path fill-rule="evenodd" d="M11.03 3.97a.75.75 0 0 1 0 1.06l-6.22 6.22H21a.75.75 0 0 1 0 1.5H4.81l6.22 6.22a.75.75 0 1 1-1.06 1.06l-7.5-7.5a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
+      </svg>
+    </button>
+  </div>
+</div>
+
+<!-- Formulario Principal -->
+<div class="max-w-3xl mx-auto mt-10 bg-white dark:bg-[var(--color-dark2)] p-6 sm:p-8 rounded-lg border-1 border-gray-100 dark:border-gray-800 shadow-lg space-y-5">
+  <form [formGroup]="networkForm" (ngSubmit)="saveConfiguration()">
+    
+    <!-- Título del Formulario -->
+    <h2 class="relative text-center text-2xl font-semibold text-[var(--color-button)] dark:text-[var(--color-title)] mb-8">
+      <span class="relative z-10 bg-white dark:bg-[var(--color-dark2)] px-4">{{ 'NetworkForm.Title' | translate }}</span>
+      <span class="absolute top-1/2 left-0 w-full border-t border-[var(--color-dark)] dark:border-[var(--color-title)] z-0"></span>
+    </h2>
+
+    <!-- Sección de Tipo de Configuración (Radio Buttons) -->
+    <fieldset class="mb-8">
+      <legend class="block text-lg font-medium text-black dark:text-white mb-4">{{ 'NetworkForm.ConfigType' | translate }}</legend>
+      <div class="space-y-4">
+        <div class="flex items-center p-4 border border-gray-300 dark:border-gray-600 rounded-lg has-[:checked]:bg-green-50 dark:has-[:checked]:bg-gray-700 has-[:checked]:border-green-500">
+          <input id="dhcp" formControlName="configType" type="radio" value="dhcp" class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300">
+          <label for="dhcp" class="ml-3 block text-sm font-medium text-gray-700 dark:text-gray-300">
+            {{ 'NetworkForm.DHCP' | translate }}
+            <span class="block text-xs text-gray-500">{{ 'NetworkForm.DHCP_Desc' | translate }}</span>
+          </label>
+        </div>
+        <div class="flex items-center p-4 border border-gray-300 dark:border-gray-600 rounded-lg has-[:checked]:bg-green-50 dark:has-[:checked]:bg-gray-700 has-[:checked]:border-green-500">
+          <input id="static" formControlName="configType" type="radio" value="static" class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300">
+          <label for="static" class="ml-3 block text-sm font-medium text-gray-700 dark:text-gray-300">
+            {{ 'NetworkForm.Static' | translate }}
+             <span class="block text-xs text-gray-500">{{ 'NetworkForm.Static_Desc' | translate }}</span>
+          </label>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Campos de IP Estática (Aparecen condicionalmente) -->
+    @if (isStatic) {
+      <div class="space-y-6 animate-fade-in">
+        <!-- Título de la sección estática -->
+        <h3 class="text-lg font-normal text-[#1f4e00] dark:text-[var(--color-title)] border-b border-gray-200 dark:border-gray-700 pb-2 mb-4">{{ 'NetworkForm.StaticConfigTitle' | translate }}</h3>
+        
+        <!-- Campo Dirección IP -->
+        <div>
+          <label for="ipAddress" class="block text-sm font-medium text-black dark:text-white mb-1">{{ 'NetworkForm.IPAddress' | translate }}</label>
+          <input id="ipAddress" formControlName="ipAddress" type="text" [placeholder]="'192.168.1.100'"
+            class="w-full bg-gray-200 dark:bg-gray-700 dark:text-white p-2 border border-gray-400 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4e9d18] focus:border-[#4e9d18]">
+          @if (networkForm.get('ipAddress')?.invalid && networkForm.get('ipAddress')?.touched) {
+            <p class="text-red-500 text-sm pt-1 pl-2">{{ 'NetworkForm.IPError' | translate }}</p>
+          }
+        </div>
+
+        <!-- Campo Máscara de Subred -->
+        <div>
+          <label for="subnetMask" class="block text-sm font-medium text-black dark:text-white mb-1">{{ 'NetworkForm.SubnetMask' | translate }}</label>
+          <input id="subnetMask" formControlName="subnetMask" type="text" [placeholder]="'255.255.255.0'"
+            class="w-full bg-gray-200 dark:bg-gray-700 dark:text-white p-2 border border-gray-400 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4e9d18] focus:border-[#4e9d18]">
+          @if (networkForm.get('subnetMask')?.invalid && networkForm.get('subnetMask')?.touched) {
+            <p class="text-red-500 text-sm pt-1 pl-2">{{ 'NetworkForm.IPError' | translate }}</p>
+          }
+        </div>
+        
+        <!-- Campo Puerta de Enlace -->
+        <div>
+          <label for="gateway" class="block text-sm font-medium text-black dark:text-white mb-1">{{ 'NetworkForm.Gateway' | translate }}</label>
+          <input id="gateway" formControlName="gateway" type="text" [placeholder]="'192.168.1.1'"
+            class="w-full bg-gray-200 dark:bg-gray-700 dark:text-white p-2 border border-gray-400 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4e9d18] focus:border-[#4e9d18]">
+          @if (networkForm.get('gateway')?.invalid && networkForm.get('gateway')?.touched) {
+            <p class="text-red-500 text-sm pt-1 pl-2">{{ 'NetworkForm.IPError' | translate }}</p>
+          }
+        </div>
+        
+        <!-- Campo DNS Primario -->
+        <div>
+          <label for="primaryDns" class="block text-sm font-medium text-black dark:text-white mb-1">{{ 'NetworkForm.PrimaryDNS' | translate }}</label>
+          <input id="primaryDns" formControlName="primaryDns" type="text" [placeholder]="'8.8.8.8'"
+            class="w-full bg-gray-200 dark:bg-gray-700 dark:text-white p-2 border border-gray-400 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4e9d18] focus:border-[#4e9d18]">
+          @if (networkForm.get('primaryDns')?.invalid && networkForm.get('primaryDns')?.touched) {
+            <p class="text-red-500 text-sm pt-1 pl-2">{{ 'NetworkForm.IPError' | translate }}</p>
+          }
+        </div>
+        
+        <!-- Campo DNS Secundario -->
+        <div>
+          <label for="secondaryDns" class="block text-sm font-medium text-black dark:text-white mb-1">{{ 'NetworkForm.SecondaryDNS' | translate }}</label>
+          <input id="secondaryDns" formControlName="secondaryDns" type="text" [placeholder]="'8.8.4.4'"
+            class="w-full bg-gray-200 dark:bg-gray-700 dark:text-white p-2 border border-gray-400 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4e9d18] focus:border-[#4e9d18]">
+          @if (networkForm.get('secondaryDns')?.hasError('pattern')) {
+            <p class="text-red-500 text-sm pt-1 pl-2">{{ 'NetworkForm.IPError' | translate }}</p>
+          }
+        </div>
+
+      </div>
+    }
+
+    <!-- Botón de Guardar -->
+    <div class="mt-10">
+      <button type="submit" [disabled]="networkForm.invalid" class="w-full bg-[var(--color-button)] text-white border-1 border-[var(--color-dark)] py-3 rounded-full shadow-lg hover:bg-[var(--button-table)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#4e9d18] disabled:bg-gray-400 disabled:cursor-not-allowed mx-auto block cursor-pointer transition-colors duration-200">
+        {{ 'NetworkForm.SaveButton' | translate }}
+      </button>
+    </div>
+  </form>
+</div>
